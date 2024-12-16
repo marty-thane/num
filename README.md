@@ -1,4 +1,4 @@
-# Přehled vybraných numerických metod
+# Numerické metody
 
 ## Derivace
 
