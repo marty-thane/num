@@ -20,13 +20,31 @@ CentralDiff <- function(f,x,h=1e-6) {
 
 ## Integrály
 
-### Midpoint rule
+### Pravidlo středního bodu
 
 ```{r}
 MidpointRule <- function(f,a,b,n=1e6) {
 	h <- (b-a)/n
 	return(h*sum(f(a+h*(1:n)-h/2)))
 }
+```
+
+### Simpsonovo pravidlo
+
+```{r}
+SimpsonRule <- function(f, a, b, n=1){
+  h <- (b-a)/n
+  hpul <- h/2
+  suma <- f(a) + f(b)
+  xs <- h*(1:n) + a - hpul
+  suma <- suma + 4*sum(f(xs))
+  if(n > 1){
+    xl <- (xs + hpul)[-n]
+    suma <- suma + 2*sum(f(xl))
+  }
+  return(suma*h/6)
+}
+
 ```
 
 ### Monte Carlo
