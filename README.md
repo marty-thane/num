@@ -5,7 +5,7 @@
 ### Dopředná
 
 ```{r}
-d <- function(f,x,h) {
+ForwardDiff <- function(f,x,h) {
 	return((f(x+h)-f(x))/h)
 }
 ```
@@ -13,7 +13,7 @@ d <- function(f,x,h) {
 ### Centrální diference
 
 ```{r}
-d <- function(f,x,h) {
+CentralDiff <- function(f,x,h) {
 	return((f(x+h)-f(x-h))/(2*h))
 }
 ```
