@@ -166,10 +166,11 @@ FixedPointStep <- function(f, h, x0, y0){
 ### Newtonova metoda
 
 ```{r}
-NewtonRoot <- function(f,fd,x0,tol=1e-6) {
+NewtonRoot <- function(f,x0,tol=1e-6) {
 	x <- x0
+    h <- tol
 	repeat{
-		dx <- f(x)/fd(x)
+        dx <- 2*h*f(x)/(f(x+h)-f(x-h))
 		if(abs(dx) < tol) return(x)
 		x <- x - dx
 	}
