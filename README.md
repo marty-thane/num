@@ -80,17 +80,18 @@ GaussPivot <- function(A,b) {
 ### Lagrange
 
 ```{r}
-l <- function(xa, x, j){
-  res <- 1
-  for(i in 1:length(x)){
-    if(i != j) res <- res*(xa-x[i])/(x[j]-x[i])
-  }
-  return(res)
-}
 Lagrange <- function(xa, x, y){
-  res <- 0
-  for(i in 1:length(x)) res <- res+y[i]*l(xa, x, i)
-  return(res)
+  n <- length(x)
+  suma <- 0
+  for(i in 1:n){
+    nasobic <- 1
+    for(j in 1:n){
+      if(j != i) nasobic <- nasobic*(xa-x[j])/(x[i]-x[j])
+    }
+    suma <- suma + y[i]*nasobic
+  }
+  return(suma)
+}
 }
 ```
 
