@@ -44,7 +44,6 @@ SimpsonRule <- function(f, a, b, n=1){
   }
   return(suma*h/6)
 }
-
 ```
 
 ### Monte Carlo
