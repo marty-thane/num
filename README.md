@@ -124,7 +124,7 @@ LSA <- function(x, y, n){
 }
 ```
 
-Spočte koeficienty aproximačního polynomu stupně $n - 1$ pro zadané body $x$, $y$.
+<!-- Spočte koeficienty aproximačního polynomu stupně $n - 1$ pro zadané body $x$, $y$. -->
 
 ## Diferenciální rovnice
 
