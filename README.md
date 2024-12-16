@@ -92,7 +92,6 @@ Lagrange <- function(xa, x, y){
   }
   return(suma)
 }
-}
 ```
 
 ## Aproximace
