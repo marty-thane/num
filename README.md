@@ -39,12 +39,6 @@ GeomMethod <- function(f,a,b,h,n=1e6){
 }
 ```
 
-```{r}
-AveMethod <- function(f,a,b,n=1e6){
-	return((b-a)*mean(f(runif(n,a,b))))
-}
-```
-
 ## Soustavy rovnic
 
 ### Gaussova eliminace
