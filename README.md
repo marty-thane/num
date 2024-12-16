@@ -5,7 +5,7 @@
 ### Dopředná
 
 ```{r}
-ForwardDiff <- function(f,x,h) {
+ForwardDiff <- function(f,x,h=1e-6) {
 	return((f(x+h)-f(x))/h)
 }
 ```
@@ -13,7 +13,7 @@ ForwardDiff <- function(f,x,h) {
 ### Centrální diference
 
 ```{r}
-CentralDiff <- function(f,x,h) {
+CentralDiff <- function(f,x,h=1e-6) {
 	return((f(x+h)-f(x-h))/(2*h))
 }
 ```
@@ -23,7 +23,7 @@ CentralDiff <- function(f,x,h) {
 ### Midpoint rule
 
 ```{r}
-MidpointRule <- function(f,a,b,n) {
+MidpointRule <- function(f,a,b,n=1e6) {
 	h <- (b-a)/n
 	return(h*sum(f(a+h*(1:n)-h/2)))
 }
@@ -32,7 +32,7 @@ MidpointRule <- function(f,a,b,n) {
 ### Monte Carlo
 
 ```{r}
-GeomMethod <- function(f,a,b,h,n){
+GeomMethod <- function(f,a,b,h,n=1e6){
 	x <- runif(n,a,b)
 	y <- runif(n,0,h)
 	return(h*(b-a)*sum(f(x) > y)/n)
@@ -40,7 +40,7 @@ GeomMethod <- function(f,a,b,h,n){
 ```
 
 ```{r}
-AveMethod <- function(f,a,b,n){
+AveMethod <- function(f,a,b,n=1e6){
 	return((b-a)*mean(f(runif(n,a,b))))
 }
 ```
