@@ -187,7 +187,7 @@ BisecRoot <- function(f,a,b){
 }
 ```
 
-Nalezne kořen spojité funkce $f(x)$ na intervalu $(a,b)$. $f(a)$ a $f(b)$ se musí lišit znaménkem, jinak není zaručeno, že se v daném intervalu kořen nachází.
+<!-- Nalezne kořen spojité funkce $f(x)$ na intervalu $(a,b)$. $f(a)$ a $f(b)$ se musí lišit znaménkem, jinak není zaručeno, že se v daném intervalu kořen nachází. -->
 
 ### Newtonova metoda
 
