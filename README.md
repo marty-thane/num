@@ -162,6 +162,33 @@ FixedPointStep <- function(f, h, x0, y0){
 
 ## Hledání kořenů
 
+### Bisekce
+
+```{r}
+BisecRoot <- function(f,a,b){
+	fa <- f(a)
+	fb <- f(b)
+	if(fa*fb<0) {
+		repeat {
+			c <- (a+b)/2
+			if(c==a | c==b) return(c)
+			fc <- f(c)
+			if(fa*fc<0) {
+				b <- c
+				fb <- fc
+			} else {
+				a <- c
+				fa <- fc
+			}
+		}
+	} else {
+		stop("f(a)*f(b) < 0 not satisfied")
+	}
+}
+```
+
+Nalezne kořen spojité funkce $f(x)$ na intervalu $(a,b)$. $f(a)$ a $f(b)$ se musí lišit znaménkem, jinak není zaručeno, že se v daném intervalu kořen nachází.
+
 ### Newtonova metoda
 
 ```{r}
