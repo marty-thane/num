@@ -10,6 +10,8 @@ ForwardDiff <- function(f,x,h=1e-6) {
 }
 ```
 
+Spočte derivaci spojité funkce $f(x)$ v bodě $x$ s krokem $h$.
+
 ### Centrální diference
 
 ```{r}
@@ -17,6 +19,8 @@ CentralDiff <- function(f,x,h=1e-6) {
 	return((f(x+h)-f(x-h))/(2*h))
 }
 ```
+
+Obdobně jako dopředná, jen přesnější.
 
 ## Integrály
 
@@ -29,10 +33,12 @@ MidpointRule <- function(f,a,b,n=1e6) {
 }
 ```
 
+Spočte integrál $f(x)$ na intervalu $(a,b)$.
+
 ### Simpsonovo pravidlo
 
 ```{r}
-SimpsonRule <- function(f, a, b, n=1){
+SimpsonRule <- function(f,a,b,n=1){
   h <- (b-a)/n
   hpul <- h/2
   suma <- f(a) + f(b)
@@ -46,6 +52,8 @@ SimpsonRule <- function(f, a, b, n=1){
 }
 ```
 
+Obdobně jako pravidlo středního bodu.
+
 ### Monte Carlo
 
 ```{r}
@@ -55,6 +63,8 @@ GeomMethod <- function(f,a,b,h,n=1e6){
 	return(h*(b-a)*sum(f(x) > y)/n)
 }
 ```
+
+Obdobně jako pravidlo středního bodu.
 
 ## Soustavy rovnic
 
@@ -88,6 +98,8 @@ GaussPivot <- function(A,b) {
 }
 ```
 
+Řeší soustavu rovnic zadanou ve tvaru $Ax = b$.
+
 ## Interpolace
 
 <!--
@@ -97,7 +109,7 @@ GaussPivot <- function(A,b) {
 ### Lagrange
 
 ```{r}
-Lagrange <- function(xa, x, y){
+Lagrange <- function(xa,x,y){
   n <- length(x)
   suma <- 0
   for(i in 1:n){
@@ -111,19 +123,21 @@ Lagrange <- function(xa, x, y){
 }
 ```
 
+Spočte hodnotu interpolačního polynomu v bodě $x_a$ pro body zadané vektory $\vec{x}$, $\vec{y}$.
+
 ## Aproximace
 
 ### LSA
 
 ```{r}
-LSA <- function(x, y, n){
+LSA <- function(x,y,n){
   X <- matrix(1, nrow=n, ncol=length(x))
   for(i in 2:n) X[i, ] <- X[i-1, ]*x
   return(c(solve(X%*%t(X), X%*%y)))
 }
 ```
 
-<!-- Spočte koeficienty aproximačního polynomu stupně $n - 1$ pro zadané body $x$, $y$. -->
+Spočte koeficienty aproximačního polynomu stupně $n-1$ pro body zadané vektory $\vec{x}$, $\vec{y}$.
 
 ## Diferenciální rovnice
 
@@ -134,6 +148,8 @@ EulerStep <- function(f,x,y,h) {
 	return(y+h*f(x,y))
 }
 ```
+
+Řeší jeden krok obyčejné diferenciální rovnice zadané ve formě $f(x,y)$ s krokem $h$.
 
 ### RK4
 
@@ -148,17 +164,7 @@ RK4 <- function(f,x,y,h){
 }
 ```
 
-### Metoda prosté iterace
-
-```{r}
-FixedPointStep <- function(f, h, x0, y0){
-  hpul <- 0.5*h
-  x1 <- x0+h
-  y1 <- y0+h*f(x0,y0)
-  for(i in 1:10) y1 <- y0+hpul*(f(x1,y1)+f(x0,y0))
-  return(y1)
-}
-```
+Obdobně jako Eulerova metoda, jen přesnější.
 
 ## Hledání kořenů
 
@@ -187,7 +193,7 @@ BisecRoot <- function(f,a,b){
 }
 ```
 
-<!-- Nalezne kořen spojité funkce $f(x)$ na intervalu $(a,b)$. $f(a)$ a $f(b)$ se musí lišit znaménkem, jinak není zaručeno, že se v daném intervalu kořen nachází. -->
+Nalezne kořen spojité funkce $f(x)$ na intervalu $(a,b)$. $f(a)$ a $f(b)$ se musí lišit znaménkem.
 
 ### Newtonova metoda
 
@@ -203,6 +209,8 @@ NewtonRoot <- function(f,x0,tol=1e-6) {
 }
 ```
 
+Nalezne kořen spojité funkce $f(x)$ při počátečním odhadu $x_0$.
+
 ## Polynomy
 
 ### Horner
@@ -216,7 +224,9 @@ Horner <- function(a,x){
 }
 ```
 
-### Chebyshev
+Efektivě počítá hodnotu polynomu v bodě $x$, jež je určen vektorem koeficientů $\vec{a}$.
+
+### Čebyšev
 
 ```{r}
 ChebyCoef <- function(n){
@@ -234,3 +244,5 @@ ChebyCoef <- function(n){
 	return(a)
 }
 ```
+
+Vrací koeficienty Čebyševova polynomu stupně $n-1$.
